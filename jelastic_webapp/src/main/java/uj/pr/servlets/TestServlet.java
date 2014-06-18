@@ -1,7 +1,12 @@
-package uj.pr;
+package uj.pr.servlets;
+
 import java.io.*;
+
 import javax.servlet.*;
 import javax.servlet.http.*;
+
+//import uj.pr.dao.TestDAO;
+//import uj.pr.dao.UserDAO;
 
 // Extend HttpServlet class
 //@WebServlet(value = "/test")
@@ -27,10 +32,17 @@ public class TestServlet extends HttpServlet {
 			throws ServletException, IOException {
 		// Set response content type
 		response.setContentType("text/html");
-
-		// Actual logic goes here.
+		
 		PrintWriter out = response.getWriter();
-		out.println("<h1>" + message + "</h1>");
+		
+		////////////////////////////////////////
+		
+		//TestDAO testdao = new TestDAO();		
+		//out.println(testdao.test());
+		
+		////////////////////////////////////////
+		
+		//out.println("<h1>" + message + "</h1>");
 		out.close();
 	}
 

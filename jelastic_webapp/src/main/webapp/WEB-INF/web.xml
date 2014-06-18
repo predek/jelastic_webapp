@@ -4,20 +4,91 @@
  http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
 	version="3.0">
 
-
-	<!-- <!DOCTYPE web-app PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 
-		2.3//EN" "http://java.sun.com/dtd/web-app_2_3.dtd" > xmlns=" -->
-
 	<display-name>Archetype Created Web Application</display-name>
 
 	<servlet>
 		<servlet-name>TestServlet</servlet-name>
-		<servlet-class>uj.pr.TestServlet</servlet-class>
+		<servlet-class>uj.pr.servlets.TestServlet</servlet-class>
 	</servlet>
+
+	<servlet>
+		<servlet-name>RegisterServlet</servlet-name>
+		<servlet-class>uj.pr.servlets.RegisterServlet</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>LoginServlet</servlet-name>
+		<servlet-class>uj.pr.servlets.LoginServlet</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>AllProductsServlet</servlet-name>
+		<servlet-class>uj.pr.servlets.AllProductsServlet</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>ShowBasketServlet</servlet-name>
+		<servlet-class>uj.pr.servlets.ShowBasketServlet</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>AddToBasketServlet</servlet-name>
+		<servlet-class>uj.pr.servlets.AddToBasketServlet</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>RemoveFromBasketServlet</servlet-name>
+		<servlet-class>uj.pr.servlets.RemoveFromBasketServlet</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>OrdersServlet</servlet-name>
+		<servlet-class>uj.pr.servlets.OrdersServlet</servlet-class>
+	</servlet>
+
 	<servlet-mapping>
 		<servlet-name>TestServlet</servlet-name>
-		<url-pattern>/t1</url-pattern>
+		<url-pattern>/test</url-pattern>
 	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>RegisterServlet</servlet-name>
+		<url-pattern>/register</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>LoginServlet</servlet-name>
+		<url-pattern>/login</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>AllProductsServlet</servlet-name>
+		<url-pattern>/allproducts</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>ShowBasketServlet</servlet-name>
+		<url-pattern>/showbasket</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>AddToBasketServlet</servlet-name>
+		<url-pattern>/addtobasket</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>RemoveFromBasketServlet</servlet-name>
+		<url-pattern>/removefrombasket</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>OrdersServlet</servlet-name>
+		<url-pattern>/orders</url-pattern>
+	</servlet-mapping>
+	
+	<listener>
+   		<listener-class>uj.pr.misc.InitListener</listener-class>
+ 	 </listener>
 
 </web-app>
 
