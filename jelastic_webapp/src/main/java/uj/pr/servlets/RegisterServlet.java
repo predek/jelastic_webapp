@@ -3,6 +3,7 @@ package uj.pr.servlets;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -48,6 +49,9 @@ public class RegisterServlet extends HttpServlet {
 		String message;
 		if(successResult){
 			message = "dodano u¿ytkownika";
+		    
+			response.sendRedirect("/login");		//po register przekierowuje na login
+			
 		} else {
 			message = "b³¹d";
 		}
