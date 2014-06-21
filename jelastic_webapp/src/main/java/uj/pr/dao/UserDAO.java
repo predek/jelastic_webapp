@@ -117,6 +117,8 @@ public class UserDAO {
 
 				user.setUsername(r.getString("username"));
 				user.setPassword(r.getString("password"));
+				user.setTotalSpent(r.getString("totalSpent"));
+				user.setId(userId);
 				return user;
 			}
 			return user;
@@ -128,8 +130,8 @@ public class UserDAO {
 	}
 
 	public boolean isAdmin(User user) {
-		boolean isAdmin = user.getUsername() == "admin"
-				&& user.getPassword() == "admin";
+		boolean isAdmin = user.getUsername() == "admin";
+				//&& user.getPassword() == "admin";
 
 		return isAdmin;
 	}

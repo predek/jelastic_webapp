@@ -51,21 +51,31 @@ public class OrderDAO {
 
 	}
 	
-	public boolean addOrder(Order order) {
+	public String addOrder(Order order) {		//returns orderId as String
 		Connection c = null;
 		PreparedStatement s = null;
-		String sql = "INSERT INTO order (id, userId) VALUES (?, ?)";
+		//String sql = "INSERT INTO order (id, userId) VALUES (?, ?)";
+		String sql = "INSERT INTO order (userId) VALUES (?)";
+		
+		String createdOrderId = "";
+		
 		try {
 			c = getConnection();
 			s = c.prepareStatement(sql);
-			s.setString(1, Integer.toString(order.getId()));
-			s.setString(2, Integer.toString(order.getUserId()));
-			return s.execute();		
+			s.setString(1, Integer.toString(order.getUserId()));
+			
+			ResultSet r = s.executeQuery();
+			while (r.next()) {		
+				createdOrderId = r.getString("id");
+			}
+			
 		} catch (Exception e) {
-			return false;
+			//return "-1";
 		} finally {
 			closeQuietly(s, c);
 		}
+		
+		return createdOrderId;
 	}
 
 	private void closeQuietly(PreparedStatement s, Connection c) {

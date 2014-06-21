@@ -1,14 +1,14 @@
-package pr.uj.basket;
+package uj.pr.basket;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import uj.pr.model.Product;
 
-public class Basket {
+public class BasketManager {
 	private ArrayList<BasketElement> basketContent;
 
-	public Basket() {
+	public BasketManager() {
 		basketContent = new ArrayList<BasketElement>();
 	}
 
@@ -41,11 +41,7 @@ public class Basket {
 		}
 	}
 	
-	public ArrayList<BasketElement> showBasket(){
+	public ArrayList<BasketElement> getBasketElements(){
 		return basketContent;
-	}
-	
-	public void calculatePrice(){		//todo //discounts etc
-		
 	}
 }

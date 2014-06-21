@@ -35,8 +35,8 @@ public class CategoryDAO {
 				category.setId(categoryId);
 				category.setName(r.getString("name"));
 				category.setDescription(r.getString("description"));
-				category.setDiscountStart(Float.parseFloat(r.getString("discountStart")));
-				category.setDiscountEnd(Float.parseFloat(r.getString("discountEnd")));
+				category.setDiscountStart(r.getString("discountStart"));
+				category.setDiscountEnd(r.getString("discountEnd"));
 				category.setPercentDiscount(Float.parseFloat(r.getString("percentDiscount")));
 				
 				return category;

@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import uj.pr.model.Order;
 import uj.pr.model.OrderElement;
 
 public class OrderElementDAO {
@@ -54,6 +55,24 @@ public class OrderElementDAO {
 			closeQuietly(s, c);
 		}
 
+	}
+	
+	public boolean addOrder(Order order) {
+		Connection c = null;
+		PreparedStatement s = null;
+		//String sql = "INSERT INTO order (id, userId) VALUES (?, ?)";
+		String sql = "INSERT INTO orderElement (orderId, productId, amount) VALUES (?, ?, ?)";
+		
+		try {
+			c = getConnection();
+			s = c.prepareStatement(sql);
+			s.setString(1, Integer.toString(order.getUserId()));
+			return s.execute();		
+		} catch (Exception e) {
+			return false;
+		} finally {
+			closeQuietly(s, c);
+		}
 	}
 
 	private void closeQuietly(PreparedStatement s, Connection c) {

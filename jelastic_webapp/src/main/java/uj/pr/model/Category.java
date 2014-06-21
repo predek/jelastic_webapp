@@ -4,8 +4,8 @@ public class Category {
 	private int id;
 	private String name;
 	private String description;
-	private float discountStart;
-	private float discountEnd;
+	private String discountStart;
+	private String discountEnd;
 	private float percentDiscount;
 
 	public Category() {
@@ -35,19 +35,19 @@ public class Category {
 		this.description = description;
 	}
 
-	public float getDiscountStart() {
+	public String getDiscountStart() {
 		return discountStart;
 	}
 
-	public void setDiscountStart(float discountStart) {
+	public void setDiscountStart(String discountStart) {
 		this.discountStart = discountStart;
 	}
 
-	public float getDiscountEnd() {
+	public String getDiscountEnd() {
 		return discountEnd;
 	}
 
-	public void setDiscountEnd(float discountEnd) {
+	public void setDiscountEnd(String discountEnd) {
 		this.discountEnd = discountEnd;
 	}
 

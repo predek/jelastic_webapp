@@ -1,4 +1,4 @@
-package pr.uj.basket;
+package uj.pr.basket;
 
 import uj.pr.model.Product;
 

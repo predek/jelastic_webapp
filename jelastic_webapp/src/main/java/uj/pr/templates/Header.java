@@ -13,12 +13,11 @@ public class Header {
 
 	public Header(HttpServlet servlet, HttpServletRequest request,
 			HttpServletResponse response) {
-
+		
 		html = "";
 
 		html = html + "<a href=\"./allproducts\">produkty</a><br>"
 				+ "<a href=\"./showbasket\">koszyk</a><br>"
-				+ "<a href=\"./orders\">zamówienia</a><br>"
 				+ "<a href=\"./register\">rejestracja</a><br>"
 				+ "<a href=\"./login\">logowanie</a><br><br>";
 
@@ -26,12 +25,18 @@ public class Header {
 
 		if (isLogged) {
 
-			int userId = Integer.parseInt((String) request.getSession()
-					.getAttribute("userId").toString());
-
 			UserDAO userdao = (UserDAO) servlet.getServletContext()
 					.getAttribute("UserDAO");
+
+			int userId = Integer.parseInt((String) request.getSession()
+					.getAttribute("userId").toString());
 			User user = userdao.getUserById(userId);
+			
+			//boolean isAdmin  = userdao.isAdmin(user);
+			
+			html = html + "<a href=\"./orders\">zamówienia</a><br><br>";
+			
+			html = html + "<a href=\"./logout\">logout</a><br><br>";
 
 			html = html + "(zalogowany jako " + user.getUsername() + ")<br><br>";
 		} else {

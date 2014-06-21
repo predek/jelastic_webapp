@@ -4,7 +4,7 @@ public class User {
 	private int id;
 	private String username;
 	private String password;
-	private float totalSpent;
+	private String totalSpent;
 
 	public User() {
 	}
@@ -33,11 +33,11 @@ public class User {
 		this.password = password;
 	}
 
-	public float getTotalSpent() {
+	public String getTotalSpent() {
 		return totalSpent;
 	}
 
-	public void setTotalSpent(float totalSpent) {
+	public void setTotalSpent(String totalSpent) {
 		this.totalSpent = totalSpent;
 	}
 

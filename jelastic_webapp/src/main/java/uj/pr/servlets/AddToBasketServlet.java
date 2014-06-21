@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import pr.uj.basket.Basket;
+import uj.pr.basket.BasketManager;
 import uj.pr.dao.ProductDAO;
 import uj.pr.dao.UserDAO;
 import uj.pr.model.Product;
@@ -29,20 +29,7 @@ public class AddToBasketServlet extends HttpServlet {
 
 	@Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		
-		////debug
-		
-		response.setContentType("text/html");
-		
-		PrintWriter out = response.getWriter();
-		out.println(request.getParameter("productid"));
-		out.println(request.getParameter("amount"));
-		out.close();
-		
-		//
-		
-		
+			throws ServletException, IOException {		
 		
 		int productId = Integer.parseInt(request.getParameter("productid"));
 		int amount;
@@ -53,7 +40,7 @@ public class AddToBasketServlet extends HttpServlet {
 		}
 		
 		HttpSession session = request.getSession();
-		Basket userBasket = (Basket)session.getAttribute("Basket");
+		BasketManager userBasket = (BasketManager)session.getAttribute("Basket");
 		
 		ProductDAO productdao = (ProductDAO) getServletContext()
 				.getAttribute("ProductDAO");
@@ -62,8 +49,7 @@ public class AddToBasketServlet extends HttpServlet {
 			
 		userBasket.addToBasket(product, amount);
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/showbasket");
-		dispatcher.forward(request, response);
+		response.sendRedirect("/showbasket");
 	}
 
 	public void destroy() {
