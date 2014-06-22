@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,14 +23,18 @@ public class OrderElementDAO {
 		return DriverManager.getConnection(URL, login, pass);
 	}
 
-	public List<OrderElement> getElementsOfOrder(int orderId) {
+	public ArrayList<OrderElement> getElementsOfOrder(int orderId) {
+		
 		Connection c = null;
 		PreparedStatement s = null;
-		String sql = "SELECT * FROM orderElement WHERE orderId = ?";
+		String sql = "SELECT * FROM `orderElement` WHERE orderId = ?";
+		
+		ArrayList<OrderElement> result = new ArrayList<OrderElement>();
+		
 		try {
 			c = getConnection();
 			s = c.prepareStatement(sql);
-			List<OrderElement> list = new ArrayList<OrderElement>();
+			
 			ResultSet r = s.executeQuery();
 			while (r.next()) {
 
@@ -46,33 +51,42 @@ public class OrderElementDAO {
 				int amount = Integer.parseInt(r.getString("amount"));
 				orderElement.setProductId(amount);
 
-				list.add(orderElement);
+				result.add(orderElement);
 			}
-			return list;
 		} catch (Exception e) {
-			return null;
+			
 		} finally {
 			closeQuietly(s, c);
 		}
+		
+		return result;
 
 	}
 	
-	public boolean addOrder(Order order) {
+	public boolean addOrderElement(OrderElement orderElement) {
+		
 		Connection c = null;
 		PreparedStatement s = null;
-		//String sql = "INSERT INTO order (id, userId) VALUES (?, ?)";
-		String sql = "INSERT INTO orderElement (orderId, productId, amount) VALUES (?, ?, ?)";
+		boolean result;
+		
+		String sql = "INSERT INTO orderElement (id, orderId, productId, amount) VALUES (null, ?, ?, ?)";
 		
 		try {
 			c = getConnection();
 			s = c.prepareStatement(sql);
-			s.setString(1, Integer.toString(order.getUserId()));
-			return s.execute();		
+			s.setInt(1, orderElement.getOrderId());
+			s.setInt(2, orderElement.getProductId());
+			s.setInt(3, orderElement.getAmount());
+			
+			result = s.execute();
+			
 		} catch (Exception e) {
-			return false;
+			result = false;
 		} finally {
 			closeQuietly(s, c);
 		}
+		
+		return result;
 	}
 
 	private void closeQuietly(PreparedStatement s, Connection c) {

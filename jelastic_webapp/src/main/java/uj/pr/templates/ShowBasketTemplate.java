@@ -134,6 +134,8 @@ public class ShowBasketTemplate {
 				
 				double discountedTotalPrice = totalProductsPrice * basketFactor * userFactor;
 				
+				discountedTotalPrice = Math.round(discountedTotalPrice * 100)/100;
+				
 				content.append("suma = ");
 
 				if(isBasketDiscounted || isUserDiscounted)		//show pre discount price
@@ -146,7 +148,7 @@ public class ShowBasketTemplate {
 				
 				//order button
 				
-				content.append("<form method=\"post\" action=\"./order\">"
+				content.append("<form method=\"post\" action=\"./orders\">"
 						+ "<input type=\"hidden\" name=\"userid\" value=\""
 						+ userId
 						+ "\">"

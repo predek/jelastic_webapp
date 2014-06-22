@@ -19,7 +19,7 @@ public class Header {
 		html = html + "<a href=\"./allproducts\">produkty</a><br>"
 				+ "<a href=\"./showbasket\">koszyk</a><br>"
 				+ "<a href=\"./register\">rejestracja</a><br>"
-				+ "<a href=\"./login\">logowanie</a><br><br>";
+				+ "<a href=\"./login\">logowanie</a><br>";
 
 		boolean isLogged = request.getSession().getAttribute("isLogged") != null;
 
@@ -32,11 +32,9 @@ public class Header {
 					.getAttribute("userId").toString());
 			User user = userdao.getUserById(userId);
 			
-			//boolean isAdmin  = userdao.isAdmin(user);
+			html = html + "<a href=\"./logout\">logout</a><br>";
 			
-			html = html + "<a href=\"./orders\">zamówienia</a><br><br>";
-			
-			html = html + "<a href=\"./logout\">logout</a><br><br>";
+			html = html + "<a href=\"./orders\">zamówienia</a><br>";
 
 			html = html + "(zalogowany jako " + user.getUsername() + ")<br><br>";
 		} else {

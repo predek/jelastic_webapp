@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,14 +22,18 @@ public class OrderDAO {
 		return DriverManager.getConnection(URL, login, pass);
 	}
 
-	public List<Order> getAllOrders() {
+	public ArrayList<Order> getAllOrders() {
+
 		Connection c = null;
 		PreparedStatement s = null;
 		String sql = "SELECT * FROM order";
+
+		ArrayList<Order> list = new ArrayList<Order>();
+
 		try {
 			c = getConnection();
 			s = c.prepareStatement(sql);
-			List<Order> list = new ArrayList<Order>();
+
 			ResultSet r = s.executeQuery();
 			while (r.next()) {
 
@@ -50,32 +55,50 @@ public class OrderDAO {
 		}
 
 	}
-	
-	public String addOrder(Order order) {		//returns orderId as String
+
+	public int addOrder(Order order) {
+		
+		int result = -1;
+
 		Connection c = null;
 		PreparedStatement s = null;
-		//String sql = "INSERT INTO order (id, userId) VALUES (?, ?)";
-		String sql = "INSERT INTO order (userId) VALUES (?)";
-		
-		String createdOrderId = "";
+		String sql = "INSERT INTO order (id, userId) VALUES (NULL, ?)";
 		
 		try {
 			c = getConnection();
 			s = c.prepareStatement(sql);
 			s.setString(1, Integer.toString(order.getUserId()));
-			
-			ResultSet r = s.executeQuery();
-			while (r.next()) {		
-				createdOrderId = r.getString("id");
-			}
-			
+			s.execute(); // returns false for insert
+			s.exe
+			result = 1;
 		} catch (Exception e) {
-			//return "-1";
+			result = -1;
 		} finally {
 			closeQuietly(s, c);
 		}
 		
-		return createdOrderId;
+		return result;
+	}
+	
+	public int lastInsertedId(){
+		
+		int result = -1;
+
+		Connection c = null;
+		PreparedStatement s = null;
+		String sql = "SELECT last_inserted_id() AS last_id FROM order";
+		try {
+			c = getConnection();
+			s = c.prepareStatement(sql);
+			ResultSet rs = s.executeQuery();
+			result = Integer.parseInt(rs.getString("last_id"));
+		} catch (Exception e) {
+			result = -1;
+		} finally {
+			closeQuietly(s, c);
+		}
+		
+		return result;
 	}
 
 	private void closeQuietly(PreparedStatement s, Connection c) {
