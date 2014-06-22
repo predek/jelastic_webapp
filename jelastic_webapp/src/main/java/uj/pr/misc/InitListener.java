@@ -12,11 +12,11 @@ public class InitListener implements ServletContextListener {
 		CategoryDAO categorydao = new CategoryDAO();
 		e.getServletContext().setAttribute("CategoryDAO", categorydao);
 		
-		OrderDAO orderdao = new OrderDAO();
-		e.getServletContext().setAttribute("OrderDAO", orderdao);
+		PurchaseDAO purchaseDAO = new PurchaseDAO();
+		e.getServletContext().setAttribute("PurchaseDAO", purchaseDAO);
 		
-		OrderElementDAO orderelementdao = new OrderElementDAO();
-		e.getServletContext().setAttribute("OrderElementDAO", orderelementdao);
+		PurchaseElementDAO purchaseElementDAO = new PurchaseElementDAO();
+		e.getServletContext().setAttribute("PurchaseElementDAO", purchaseElementDAO);
 		
 		ProductDAO productdao = new ProductDAO();
 		e.getServletContext().setAttribute("ProductDAO", productdao);

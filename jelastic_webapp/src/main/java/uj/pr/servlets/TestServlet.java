@@ -2,12 +2,6 @@ package uj.pr.servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -15,12 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import uj.pr.dao.OrderDAO;
-import uj.pr.dao.OrderElementDAO;
 import uj.pr.dao.PurchaseDAO;
 import uj.pr.dao.PurchaseElementDAO;
-import uj.pr.model.Order;
-import uj.pr.model.OrderElement;
 import uj.pr.model.Purchase;
 import uj.pr.model.PurchaseElement;
 
@@ -65,7 +55,7 @@ public class TestServlet extends HttpServlet {
 		content.append(Integer.toString(result));
 		content.append(purchaseDAO.status);
 		
-		result = purchaseDAO.testAdd(purchase); // test .add
+		result = purchaseDAO.add(purchase); // test .add
 		content.append(Integer.toString(result));
 		content.append(purchaseDAO.status);
 		

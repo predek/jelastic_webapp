@@ -7,9 +7,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import uj.pr.basket.DiscountManager;
 import uj.pr.dao.CategoryDAO;
 import uj.pr.dao.ProductDAO;
+import uj.pr.misc.DiscountManager;
 import uj.pr.misc.Renderer;
 import uj.pr.model.Category;
 import uj.pr.model.Product;

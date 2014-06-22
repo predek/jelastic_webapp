@@ -47,8 +47,8 @@
 	</servlet>
 
 	<servlet>
-		<servlet-name>OrdersServlet</servlet-name>
-		<servlet-class>uj.pr.servlets.OrdersServlet</servlet-class>
+		<servlet-name>PurchaseServlet</servlet-name>
+		<servlet-class>uj.pr.servlets.PurchaseServlet</servlet-class>
 	</servlet>
 
 	<servlet-mapping>
@@ -97,7 +97,7 @@
 	</servlet-mapping>
 
 	<servlet-mapping>
-		<servlet-name>OrdersServlet</servlet-name>
+		<servlet-name>PurchaseServlet</servlet-name>
 		<url-pattern>/orders</url-pattern>
 	</servlet-mapping>
 	
