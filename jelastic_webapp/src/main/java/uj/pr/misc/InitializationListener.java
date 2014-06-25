@@ -5,7 +5,7 @@ import javax.servlet.ServletContextListener;
 
 import uj.pr.dao.*;
 
-public class InitListener implements ServletContextListener {
+public class InitializationListener implements ServletContextListener {
 
 	public void contextInitialized(ServletContextEvent e) {
 		

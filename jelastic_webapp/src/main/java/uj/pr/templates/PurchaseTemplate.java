@@ -11,19 +11,19 @@ import uj.pr.dao.ProductDAO;
 import uj.pr.dao.PurchaseDAO;
 import uj.pr.dao.PurchaseElementDAO;
 import uj.pr.dao.UserDAO;
-import uj.pr.misc.Renderer;
+import uj.pr.misc.TemplateRenderer;
 import uj.pr.model.Product;
 import uj.pr.model.Purchase;
 import uj.pr.model.PurchaseElement;
 import uj.pr.model.User;
 
 public class PurchaseTemplate {
-	Renderer renderer;
+	TemplateRenderer renderer;
 
 	public PurchaseTemplate(HttpServlet servlet, HttpServletRequest request,
 			HttpServletResponse response) throws IOException {
 
-		renderer = new Renderer(servlet, request, response);
+		renderer = new TemplateRenderer(servlet, request, response);
 
 		StringBuilder content = new StringBuilder();
 

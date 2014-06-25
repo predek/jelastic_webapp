@@ -12,16 +12,16 @@ import uj.pr.basket.BasketElement;
 import uj.pr.basket.BasketManager;
 import uj.pr.dao.UserDAO;
 import uj.pr.misc.DiscountManager;
-import uj.pr.misc.Renderer;
+import uj.pr.misc.TemplateRenderer;
 import uj.pr.model.User;
 
 public class ShowBasketTemplate {
-	Renderer renderer;
+	TemplateRenderer renderer;
 
 	public ShowBasketTemplate(HttpServlet servlet, HttpServletRequest request,
 			HttpServletResponse response) throws IOException {
 
-		renderer = new Renderer(servlet, request, response);
+		renderer = new TemplateRenderer(servlet, request, response);
 
 		StringBuilder content = new StringBuilder();
 

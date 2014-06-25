@@ -6,15 +6,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import uj.pr.misc.Renderer;
+import uj.pr.misc.TemplateRenderer;
 
 public class LoginTemplate {
-	Renderer renderer;
+	TemplateRenderer renderer;
 
 	public LoginTemplate(HttpServlet servlet, HttpServletRequest request,
 			HttpServletResponse response) throws IOException {
 
-		renderer = new Renderer(servlet, request, response);
+		renderer = new TemplateRenderer(servlet, request, response);
 
 		StringBuilder content = new StringBuilder();
 		

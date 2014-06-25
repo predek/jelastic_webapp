@@ -23,24 +23,29 @@ public class DiscountManager {
 	public int calculateCurrentProductDiscount(Product product) {
 
 		Date currentDate = new Date(Calendar.getInstance().getTimeInMillis());
+		
+		Category productCategory = getProductCategory(product);
 
-		return calculateProductDiscount(product, currentDate);
+		return calculateProductDiscount(product, productCategory, currentDate);
+	}
+	
+	private Category getProductCategory(Product product){
+
+		int categoryId = product.getCategoryId();
+
+		CategoryDAO categoryDAO = (CategoryDAO) servlet.getServletContext()
+				.getAttribute("CategoryDAO");
+
+		return categoryDAO.getCategoryById(categoryId);
+		
 	}
 
-	private int calculateProductDiscount(Product product, Date currentDate) {
+	private int calculateProductDiscount(Product product, Category basketElementCategory, Date currentDate) {
 
 		// seasonal discount (based on product category)
 		// e 0..100
 
 		int percentDiscount = 0;
-
-		CategoryDAO categoryDAO = (CategoryDAO) servlet.getServletContext()
-				.getAttribute("CategoryDAO");
-
-		int basketElementCategoryId = product.getCategoryId();
-
-		Category basketElementCategory = categoryDAO
-				.getCategoryById(basketElementCategoryId);
 		
 		boolean isDiscounted;
 		

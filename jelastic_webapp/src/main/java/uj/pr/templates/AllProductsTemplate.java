@@ -10,17 +10,17 @@ import javax.servlet.http.HttpServletResponse;
 import uj.pr.dao.CategoryDAO;
 import uj.pr.dao.ProductDAO;
 import uj.pr.misc.DiscountManager;
-import uj.pr.misc.Renderer;
+import uj.pr.misc.TemplateRenderer;
 import uj.pr.model.Category;
 import uj.pr.model.Product;
 
 public class AllProductsTemplate {
-	Renderer renderer;
+	TemplateRenderer renderer;
 
 	public AllProductsTemplate(HttpServlet servlet, HttpServletRequest request,
 			HttpServletResponse response) throws IOException {
 
-		renderer = new Renderer(servlet, request, response);
+		renderer = new TemplateRenderer(servlet, request, response);
 
 		StringBuilder content = new StringBuilder();
 

@@ -7,14 +7,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class Renderer {
+public class TemplateRenderer {
 	public String content;
 
 	private HttpServlet servlet;
 	private HttpServletRequest request;
 	private HttpServletResponse response;
 
-	public Renderer(HttpServlet servlet, HttpServletRequest request,
+	public TemplateRenderer(HttpServlet servlet, HttpServletRequest request,
 			HttpServletResponse response) throws IOException {
 		this.servlet = servlet;
 		this.request = request;
