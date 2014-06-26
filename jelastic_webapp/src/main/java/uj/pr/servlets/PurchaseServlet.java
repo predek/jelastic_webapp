@@ -53,7 +53,7 @@ public class PurchaseServlet extends HttpServlet {
 		PurchaseElementDAO purchaseElementDAO = (PurchaseElementDAO) getServletContext()
 				.getAttribute("PurchaseElementDAO");
 
-		int userId = (Integer) session.getAttribute("userId");
+		int userId = Integer.parseInt((String) session.getAttribute("userId"));
 		// content.append("userId = " + Integer.toString(userId) + "<br>");
 
 		Purchase purchase = new Purchase();

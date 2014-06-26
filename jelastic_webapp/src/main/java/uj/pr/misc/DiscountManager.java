@@ -23,13 +23,13 @@ public class DiscountManager {
 	public int calculateCurrentProductDiscount(Product product) {
 
 		Date currentDate = new Date(Calendar.getInstance().getTimeInMillis());
-		
+
 		Category productCategory = getProductCategory(product);
 
 		return calculateProductDiscount(product, productCategory, currentDate);
 	}
-	
-	private Category getProductCategory(Product product){
+
+	private Category getProductCategory(Product product) {
 
 		int categoryId = product.getCategoryId();
 
@@ -37,24 +37,25 @@ public class DiscountManager {
 				.getAttribute("CategoryDAO");
 
 		return categoryDAO.getCategoryById(categoryId);
-		
+
 	}
 
-	private int calculateProductDiscount(Product product, Category basketElementCategory, Date currentDate) {
+	public int calculateProductDiscount(Product product,
+			Category basketElementCategory, Date currentDate) {
 
 		// seasonal discount (based on product category)
 		// e 0..100
 
 		int percentDiscount = 0;
-		
+
 		boolean isDiscounted;
-		
+
 		try {
 			Date discountStartDate = Date.valueOf(basketElementCategory
 					.getDiscountStart());
 			Date discountEndDate = Date.valueOf(basketElementCategory
 					.getDiscountEnd());
-
+			
 			isDiscounted = (currentDate.after(discountStartDate) && currentDate
 					.before(discountEndDate));
 
@@ -83,8 +84,11 @@ public class DiscountManager {
 			BasketElement basketElement = (BasketElement) basketContent.get(i);
 
 			int discountPercent = calculateCurrentProductDiscount(basketElement.product);
-			double discountedProductPrice = Math.floor(basketElement.product.getPrice() * basketElement.amount
-					* 0.01 * (100 - discountPercent));
+			double discountedProductPrice = Math.floor(basketElement.product
+					.getPrice()
+					* basketElement.amount
+					* 0.01
+					* (100 - discountPercent));
 			totalBasketPrice += discountedProductPrice;
 		}
 

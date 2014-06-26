@@ -23,8 +23,9 @@ public class LogoutServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		HttpSession session = request.getSession();
-		session.setAttribute("isLogged", null);
-		session.setAttribute("userId", -1);
+		session.removeAttribute("isLogged");
+		session.removeAttribute("userId");
+		session.removeAttribute("Basket");
 
 		response.sendRedirect("/login");
 	}
